@@ -63,27 +63,32 @@ translate(0,-40);
 ellipse(X,C,16,16);
 translate(0,-40);
 ellipse(X,C,16,16);
-pop();*/
+pop();
 
- 
-  noStroke();
-  
-translate(20,20);
-  int s = 45; // espacio entre los círculos
-int tam = 43;
+
+}*/
+   noStroke();
+  translate(410, 10);
+
+    int s = 20;
+  float mas = 22;
+  float min = 8;
+  float cx = width * 0.75;
+  float cy = height / 2;
+  float distancia = dist(0, 0, 400, 400);
+
   for (int y = 0; y < height; y += s) {
-    for (int x = 0; x < width; x += s) {
-      if((x+y)%2==0){
-        fill(0);
-      ellipse(x, y, tam,tam); // círculo en (x, y) con tamaño 30
+    for (int x = 0; x < 400; x += s) {
+      float d = dist(x + 400, y, cx, cy);
+      float tam = map(d, 0, distancia, min, mas);
+
+      if ((x / s + y / s) % 2 == 0) {
+        fill(invertirColores ? 255 : 0);
       } else {
-      fill(200);
-       ellipse(x, y, tam, tam); 
-      
-       
+        fill(invertirColores ? 0 : 255);
+      }
+
+      ellipse(x, y, tam, tam);
     }
   }
-}
-translate(-20,-20);
-image(obra,0,0,400,400);
 }
